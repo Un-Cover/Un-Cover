@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/mapBack"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Back"
+            android:onClick="returnToDash"
+            android:layout_alignParentLeft="true"
+            />
+        <Button
+            android:id="@+id/mapSearchSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Search Settings"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Map Board"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="28dp"
+            android:layout_marginTop="5dp"
+        />
+    </LinearLayout>
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/map"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.example.brandon.uncover.Map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_gravity="center"
+        android:layout_weight=".02"
+    />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/newEntry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Place New Neocache"
+            android:textSize="20dp"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight=".3">
+
+        <Button
+            android:id="@+id/mapList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List \nView"
+            android:textSize="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latitude"
+                android:textSize="15dip"
+            />
+            
+            <TextView
+                android:id="@+id/TextView02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="unknown"
+                android:textSize="10dip"
+            />
+
+            <TextView
+                android:id="@+id/TextView03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Longitude"
+                android:textSize="15dip"
+            />
+
+            <TextView
+                android:id="@+id/TextView04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="unknown"
+                android:textSize="10dip"
+            />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/pingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Ping"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+        />
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+

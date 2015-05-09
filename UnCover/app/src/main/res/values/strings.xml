@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">UnCover</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="Title">Un\/Cover</string>
+    <string name="login">Log In</string>
+    <string name="map">Map</string>
+    <string name="dashReturn">Return to Dashboard</string>
+    <string name="cacheFound">Neocache(s) found!</string>
+    <string name="sSettings">Search Settings</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_activity_entry">entry</string>
+    <string-array name="distances">
+        <item>0.1 mi</item>
+        <item>0.2 mi</item>
+        <item>0.3 mi</item>
+        <item>0.4 mi</item>
+        <item>0.5 mi</item>
+        <item>0.6 mi</item>
+        <item>0.7 mi</item>
+        <item>0.8 mi</item>
+        <item>0.9 mi</item>
+        <item>1.0 mi</item>
+        <item>1.1 mi</item>
+        <item>1.2 mi</item>
+        <item>1.3 mi</item>
+        <item>1.4 mi</item>
+        <item>1.5 mi</item>
+    </string-array>
+    <string name="title_activity_map">Map</string>
+    <string name="title_activity_cache_details">cache_details</string>
+    <string name="title_activity_search_settings">searchSettings</string>
+    <string name="title_activity_maps_activity_test">Map</string>
+    <string name="google_maps_key">AIzaSyDlZ8xUbRHpuE76qRoyQUzyzBIEGRZOwAg</string>
+    <string name="title_activity_neocache_list_view">neocacheListView</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="hello_square">Hello Square World!</string>
+</resources>
