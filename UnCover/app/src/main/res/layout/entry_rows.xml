@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp">
 
     <TextView
         android:id="@+id/itemDescription"
@@ -53,16 +55,41 @@
         />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/itemDistance"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:textColor="#000000"
-        android:text="DISTANCE FROM USER"
-        android:gravity="center_horizontal"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-    />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/itemDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="#000000"
+            android:text="DISTANCE FROM USER"
+            android:gravity="start"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_weight="1"
+        />
+
+        <TextView
+            android:id="@+id/itemRange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="#000000"
+            android:text="Distance to Uncover"
+            android:layout_weight="1"
+            android:gravity="end"
+         />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/uButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/eye_icon"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

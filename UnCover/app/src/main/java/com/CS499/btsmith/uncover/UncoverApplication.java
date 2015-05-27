@@ -1,9 +1,9 @@
-package com.example.brandon.uncover;
+package com.CS499.btsmith.uncover;
 
 import android.app.Application;
 
-import com.example.brandon.uncover.Data.Entry;
-import com.example.brandon.uncover.Data.Notification;
+import com.CS499.btsmith.uncover.Data.Entry;
+import com.CS499.btsmith.uncover.Data.Notification;
 import com.parse.Parse;
 import com.parse.ParseObject;
 

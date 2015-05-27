@@ -1,4 +1,4 @@
-package com.example.brandon.uncover;
+package com.CS499.btsmith.uncover;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -8,14 +8,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivityTest extends FragmentActivity {
+public class MapsActivitything extends FragmentActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps_activity_test);
+        setContentView(R.layout.activity_maps_activitything);
         setUpMapIfNeeded();
     }
 

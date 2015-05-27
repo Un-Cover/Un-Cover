@@ -1,4 +1,4 @@
-package com.example.brandon.uncover;
+package com.CS499.btsmith.uncover;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import com.parse.ParseObject;
 
 
 public class SplashScreen extends ActionBarActivity {

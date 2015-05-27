@@ -1,6 +1,5 @@
-package com.example.brandon.uncover;
+package com.CS499.btsmith.uncover;
 
-import android.app.ListFragment;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,11 +9,10 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.brandon.uncover.Data.Notification;
+import com.CS499.btsmith.uncover.Data.Notification;
 import com.parse.FindCallback;
 import com.parse.ParseQuery;
 
-import java.text.ParseException;
 import java.util.List;
 
 public class Dashboard extends ActionBarActivity {

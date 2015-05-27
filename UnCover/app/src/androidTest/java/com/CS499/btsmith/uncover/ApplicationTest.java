@@ -1,4 +1,4 @@
-package com.example.brandon.uncover;
+package com.CS499.btsmith.uncover;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

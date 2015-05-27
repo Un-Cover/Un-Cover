@@ -1,4 +1,4 @@
-package com.example.brandon.uncover;
+package com.CS499.btsmith.uncover;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,9 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.brandon.uncover.Data.Notification;
-
-import org.w3c.dom.Text;
+import com.CS499.btsmith.uncover.Data.Notification;
 
 import java.util.List;
 

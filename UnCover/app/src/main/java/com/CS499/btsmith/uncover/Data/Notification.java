@@ -1,4 +1,4 @@
-package com.example.brandon.uncover.Data;
+package com.CS499.btsmith.uncover.Data;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;

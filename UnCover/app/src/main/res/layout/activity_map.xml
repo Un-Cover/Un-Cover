@@ -44,13 +44,14 @@
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/map"
-        android:layout_width="350dp"
-        android:layout_height="300dp"
+        android:layout_width="330dp"
+        android:layout_height="280dp"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="com.example.brandon.uncover.Map"
+        tools:context="com.CS499.btsmith.uncover.Map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_gravity="center"
-        android:layout_weight=".02"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
     />
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,14 +63,15 @@
             android:layout_height="wrap_content"
             android:text="Place New Neocache"
             android:textSize="20dp"
-            android:layout_margin="10dp"/>
+            android:layout_margin="5dp"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_weight=".3">
+        android:paddingBottom="15dp"
+        >
 
         <Button
             android:id="@+id/mapList"
@@ -78,46 +80,50 @@
             android:text="List \nView"
             android:textSize="20dp"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="15dp"
+            android:layout_weight=".4"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1">
+            android:layout_gravity="center"
+            android:layout_weight="1.5">
 
             <TextView
                 android:id="@+id/TextView01"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Latitude"
-                android:textSize="15dip"
+                android:textSize="15dp"
+                android:gravity="center"
             />
             
             <TextView
                 android:id="@+id/TextView02"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="unknown"
-                android:textSize="10dip"
+                android:textSize="10dp"
+                android:gravity="center"
             />
 
             <TextView
                 android:id="@+id/TextView03"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Longitude"
-                android:textSize="15dip"
+                android:textSize="15dp"
+                android:gravity="center"
             />
 
             <TextView
                 android:id="@+id/TextView04"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="unknown"
-                android:textSize="10dip"
+                android:textSize="10dp"
+                android:gravity="center"
             />
 
         </LinearLayout>
@@ -131,7 +137,7 @@
             android:text="Ping"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
         />
     </LinearLayout>
 

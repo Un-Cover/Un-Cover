@@ -5,11 +5,11 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.example.brandon.uncover"
+        applicationId "com.CS499.btsmith.uncover"
         minSdkVersion 16
         targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.02"
     }
     buildTypes {
         debug {
@@ -31,6 +31,10 @@ dependencies {
 dependencies {
     compile 'com.parse.bolts:bolts-android:1.+'
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+}
+dependencies {
+    compile 'com.google.android.gms:play-services:4.2.42'
+    compile 'com.android.support:appcompat-v7:21.+'
 }
 dependencies {
     compile 'com.google.android.gms:play-services:4.2.42'

@@ -1,10 +1,8 @@
-package com.example.brandon.uncover;
+package com.CS499.btsmith.uncover;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,17 +10,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.brandon.uncover.Data.Entry;
+import com.CS499.btsmith.uncover.Data.Entry;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -55,6 +50,13 @@ public class neocacheListView extends ListActivity {
                     Toast.makeText(neocacheListView.this, "OOPS WE MESSED UP", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(neocacheListView.this, "YOU CLICKED", Toast.LENGTH_SHORT).show();
             }
         });
 

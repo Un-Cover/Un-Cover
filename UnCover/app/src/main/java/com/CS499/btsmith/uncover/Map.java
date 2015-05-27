@@ -1,4 +1,4 @@
-package com.example.brandon.uncover;
+package com.CS499.btsmith.uncover;
 
 import android.content.Intent;
 import android.location.Criteria;

@@ -32,8 +32,14 @@
     <string name="title_activity_cache_details">cache_details</string>
     <string name="title_activity_search_settings">searchSettings</string>
     <string name="title_activity_maps_activity_test">Map</string>
-    <string name="google_maps_key">AIzaSyDlZ8xUbRHpuE76qRoyQUzyzBIEGRZOwAg</string>
+    <string name="google_maps_key">AIzaSyA6GG90WnV1uGmhDufaD4D7fRa7s5SxCEM</string>
     <string name="title_activity_neocache_list_view">neocacheListView</string>
     <string name="hello_round">Hello Round World!</string>
     <string name="hello_square">Hello Square World!</string>
+    <string name="Lenny">( ͡° ͜ʖ ͡°)</string>
+    <string name="title_activity_neocache_details">neocache_details</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps_activitything">Map</string>
 </resources>
