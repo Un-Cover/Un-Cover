@@ -57,9 +57,9 @@ public class detailed_view extends ActionBarActivity {
                     desc.setText(entry.getDescription());
                     content.setText(entry.getContent());
                     author.setText(entry.getName());
-                    distance.setText(imported.getString("distance"));
+                    distance.setText(imported.getString("distance") + " mi");
                     date.setText(entry.getTime());
-                    uncoversAmount.setText(entry.getViews().toString());
+                    uncoversAmount.setText(entry.getViews().toString() + " views");
 
                     //update views to +1
                     Integer newVal = (Integer) entry.getViews();

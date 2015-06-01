@@ -12,13 +12,22 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.CS499.btsmith.uncover.Data.Entry;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseQuery;
+
+import java.util.List;
+import java.util.Random;
 
 public class Map extends FragmentActivity {
 
@@ -112,6 +121,22 @@ public class Map extends FragmentActivity {
                 startActivity(intent);
             }
         });
+
+        //Place all markers on map
+        ParseQuery<Entry> query = ParseQuery.getQuery(Entry.class);
+        query.findInBackground(new FindCallback<Entry>() {
+            @Override
+            public void done(List<Entry> list, ParseException e) {
+                for(Entry entry : list)
+                {
+                    LatLng entryLocation = new LatLng(entry.getPosition().getLatitude(), entry.getPosition().getLongitude());
+                    Marker mapMarker = mMap.addMarker(new MarkerOptions().position(entryLocation)
+                            .title(entry.getDescription())
+                            .snippet(entry.getName())
+                            .icon(BitmapDescriptorFactory.defaultMarker(hueGenerator())));
+                }
+            }
+        });
     }
 
     LocationListener locListen = new LocationListener()
@@ -145,6 +170,15 @@ public class Map extends FragmentActivity {
         }
     };
 
+    public float hueGenerator()
+    {
+        float color;
+        Random floatGen = new Random();
+        color = floatGen.nextFloat() * 360;
+
+        return color;
+    }
+
     private void updateLocation(Location location)
     {
         myLoc = location;
@@ -175,7 +209,6 @@ public class Map extends FragmentActivity {
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
-                setUpMap();
                 mMap.setMyLocationEnabled(true);
 
             }
@@ -186,9 +219,5 @@ public class Map extends FragmentActivity {
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 10);
         mMap.animateCamera(cameraUpdate);
-    }
-
-    private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
     }
 }

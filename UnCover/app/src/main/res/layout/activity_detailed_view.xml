@@ -29,15 +29,16 @@
                 android:id="@+id/neocacheDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Description"
+                android:text="@string/Lenny"
                 android:textSize="26dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
 
             <TextView
                 android:id="@+id/neocacheOwner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Author"
+                android:text="@string/Lenny"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:layout_margin="15dp"/>
@@ -46,10 +47,11 @@
                 android:id="@+id/neocacheContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Content"
+                android:text="@string/Lenny"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:padding="20dp"
+                android:textColor="#000000"
                 />
 
             <LinearLayout
@@ -61,7 +63,7 @@
                     android:id="@+id/neocacheDistance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Distance"
+                    android:text="@string/Lenny"
                     android:textSize="18dp"
                     android:layout_weight="1"
                     />
@@ -70,7 +72,7 @@
                     android:id="@+id/neocacheDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Time Posted"
+                    android:text="@string/Lenny"
                     android:textSize="18dp"/>
             </LinearLayout>
             <TextView
