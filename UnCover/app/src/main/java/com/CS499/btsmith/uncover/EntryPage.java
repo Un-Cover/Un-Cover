@@ -37,11 +37,11 @@ import java.util.SimpleTimeZone;
 import java.util.TimeZone;
 
 
-public class EntryPage extends ActionBarActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
+public class EntryPage extends ActionBarActivity {
 
-    private LocationManager locationManager;
-    private Location myPosition;
-    private GoogleApiClient googleApiClient;
+    private double myLat;
+    private double myLong;
+    private Location thisSpot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,11 @@ public class EntryPage extends ActionBarActivity implements GoogleApiClient.Conn
         setContentView(R.layout.activity_entry);
         Spinner uncoverSpinner = (Spinner) findViewById(R.id.uncoverSpinner);
         Spinner visibilitySpinner = (Spinner) findViewById(R.id.visibilitySpinner);
+
+        Bundle imported = getIntent().getExtras();
+        myLat = imported.getDouble("Latitude");
+        myLong = imported.getDouble("Longitude");
+        thisSpot = (Location) imported.getParcelable("Location");
 
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.distances,
                 android.R.layout.simple_spinner_item);
@@ -58,35 +63,6 @@ public class EntryPage extends ActionBarActivity implements GoogleApiClient.Conn
         uncoverSpinner.setAdapter(adapter1);
         visibilitySpinner.setAdapter(adapter1);
 
-        buildGoogleAPIClient();
-
-        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        Location location = locationManager
-                      .getLastKnownLocation(locationManager.getBestProvider(new Criteria(), false));
-
-        LocationListener locListen = new LocationListener()
-        {
-            @Override
-            public void onLocationChanged(Location location) {
-                updateLocation(location);
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-
-            }
-        };
-
         //Publishing button
         Button publishButton = (Button) findViewById(R.id.publish_button);
         publishButton.setOnClickListener(new View.OnClickListener()
@@ -94,6 +70,9 @@ public class EntryPage extends ActionBarActivity implements GoogleApiClient.Conn
             @Override
             public void onClick(View v)
             {
+                EditText namespace = (EditText) findViewById(R.id.username);
+                String username = namespace.getText().toString();
+
                 EditText desc = (EditText) findViewById(R.id.descText);
                 String description = desc.getText().toString();
 
@@ -101,79 +80,30 @@ public class EntryPage extends ActionBarActivity implements GoogleApiClient.Conn
                 String content = contentEdit.getText().toString();
 
                 Entry entry = new Entry();
-                entry.setName("Leroy Jenkins");
+                entry.setName(username);
                 entry.setDescription(description);
                 entry.setContent(content);
                 int[] curTime = getTimeOfPosting();
                 String timeOfPosting = curTime[0] + "/" + curTime[1] + "/" + curTime[2] + "; "
                         + curTime[3] + ":" + curTime[4];
                 entry.setTime(timeOfPosting);
-                if(entry.getViews() == null)
-                {
-                    entry.initializeViews();
-                }
-                else
-                {
-                    entry.setViews(entry.getViews());
-                }
+                entry.initializeViews();
 
                 Intent intent = new Intent(EntryPage.this, Map.class);
 
-                if(myPosition != null)
-                {
-                    Toast.makeText(EntryPage.this, "Location found! Sending post", Toast.LENGTH_SHORT).show();
-                    ParseGeoPoint point = new ParseGeoPoint(myPosition.getLatitude(), myPosition.getLongitude());
-                    entry.setPosition(point);
-                    entry.saveInBackground();
-                    startActivity(intent);
-                }
-                else
-                {
-                    Toast.makeText(EntryPage.this, "No Location found, sending post", Toast.LENGTH_SHORT).show();
-                    startActivity(intent);
-                    entry.saveInBackground();
-                }
+                Toast.makeText(EntryPage.this, ("Latitude: " + thisSpot.getLatitude() + " Longitude: " + thisSpot.getLongitude()), Toast.LENGTH_SHORT).show();
+                ParseGeoPoint point = new ParseGeoPoint(myLat, myLong);
+                entry.setPosition(point);
+                entry.saveInBackground();
+                startActivity(intent);
 
                 desc.setText("");
                 contentEdit.setText("");
-
             }
         }
         );
 
     }
-
-    @Override
-    public void onConnected(Bundle connectionHint) {
-        // Provides a simple way of getting a device's location and is well suited for
-        // applications that do not require a fine-grained location and that do not need location
-        // updates. Gets the best and most recent location currently available, which may be null
-        // in rare cases when a location is not available.
-        myPosition = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
-        if (myPosition != null) {
-            Toast.makeText(this, "Location found!", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "No Location Detected", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult result) {
-        // Refer to the javadoc for ConnectionResult to see what error codes might be returned in
-        // onConnectionFailed.
-        Log.i("Basic-location-sample", "Connection failed: ConnectionResult.getErrorCode() = " + result.getErrorCode());
-    }
-
-
-    @Override
-    public void onConnectionSuspended(int cause) {
-        // The connection to Google Play services was lost for some reason. We call connect() to
-        // attempt to re-establish the connection.
-        Log.i("Basic-location-sample", "Connection suspended");
-        googleApiClient.connect();
-    }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -233,19 +163,5 @@ public class EntryPage extends ActionBarActivity implements GoogleApiClient.Conn
         time[3] = calendar.get(Calendar.HOUR_OF_DAY) + 1;
         time[4] = calendar.get(Calendar.MINUTE);
         return time;
-    }
-
-    private void updateLocation(Location location)
-    {
-        myPosition = location;
-    }
-
-    private void buildGoogleAPIClient()
-    {
-        googleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
     }
 }

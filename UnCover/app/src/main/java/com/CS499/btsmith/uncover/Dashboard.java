@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,17 +31,13 @@ public class Dashboard extends ActionBarActivity {
         noteQuery.findInBackground(new FindCallback<Notification>() {
             @Override
             public void done(List<Notification> notifications, com.parse.ParseException e) {
-                try
-                {
+                try {
                     nAdapter = new notificationsAdapter(Dashboard.this, noteQuery.find());
-                }
-                catch(com.parse.ParseException exception)
-                {
+                } catch (com.parse.ParseException exception) {
                     Toast.makeText(Dashboard.this, "OOPS WE MESSED UP", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
     }
 
@@ -65,18 +62,6 @@ public class Dashboard extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void newEntry(View view)
-    {
-        Intent intent = new Intent(this, EntryPage.class);
-        startActivity(intent);
-    }
-
-    public void returnToSplash(View view)
-    {
-        Intent intent = new Intent(this, SplashScreen.class);
-        startActivity(intent);
     }
 
     public void dashToMap(View view)

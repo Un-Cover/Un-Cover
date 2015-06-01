@@ -13,14 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
-            android:id="@+id/backDash"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:text="Back"
-            android:textSize="12dp"
-            android:onClick="returnToSplash"
-        />
 
         <TextView android:text="Dashboard"
             android:layout_width="wrap_content"
@@ -31,16 +23,6 @@
             android:layout_weight="1"
             android:gravity="center"
         />
-
-        <Button
-            android:id="@+id/dashEntry"
-            android:layout_width="55dp"
-            android:layout_height="60dp"
-            android:text="New Post"
-            android:textSize="12dp"
-            android:onClick="newEntry"
-        />
-
 
     </LinearLayout>
 

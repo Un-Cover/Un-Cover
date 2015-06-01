@@ -19,10 +19,6 @@ public class Entry extends ParseObject
         return getString("Name");
     }
 
-    public void setName(String name) {
-        put("Name", name);
-    }
-
     public String getDescription()
     {
         return getString("Description");
@@ -38,6 +34,20 @@ public class Entry extends ParseObject
         return getParseGeoPoint("Location");
     }
 
+    public Number getViews()
+    {
+        return getNumber("uncovers");
+    }
+
+    public String getTime()
+    {
+        return getString("TimeOfPosting");
+    }
+
+    public void setName(String name) {
+        put("Name", name);
+    }
+
     public void setDescription(String description)
     {
         put("Description", description);
@@ -48,11 +58,6 @@ public class Entry extends ParseObject
         put("Content", content);
     }
 
-    public String getTime()
-    {
-        return getString("TimeOfPosting");
-    }
-
     public void setTime(String timeOfPosting)
     {
         put("TimeOfPosting", timeOfPosting);
@@ -61,11 +66,6 @@ public class Entry extends ParseObject
     public void setPosition(ParseGeoPoint location)
     {
         put("Location", location);
-    }
-
-    public Number getViews()
-    {
-        return getNumber("uncovers");
     }
 
     public void setViews(Number currentViews)

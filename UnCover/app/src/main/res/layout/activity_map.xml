@@ -44,8 +44,8 @@
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/map"
-        android:layout_width="330dp"
-        android:layout_height="280dp"
+        android:layout_width="300dp"
+        android:layout_height="240dp"
         xmlns:tools="http://schemas.android.com/tools"
         tools:context="com.CS499.btsmith.uncover.Map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -78,8 +78,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="List \nView"
-            android:textSize="20dp"
-            android:layout_gravity="center_vertical"
+            android:textSize="14dp"
+            android:layout_gravity="center"
             android:layout_marginLeft="15dp"
             android:layout_weight=".4"/>
 
@@ -95,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Latitude"
-                android:textSize="15dp"
+                android:textSize="12dp"
                 android:gravity="center"
             />
             
@@ -113,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Longitude"
-                android:textSize="15dp"
+                android:textSize="12dp"
                 android:gravity="center"
             />
 
@@ -133,11 +133,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:text="Ping"
-            android:textSize="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="15dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center"
         />
     </LinearLayout>
 

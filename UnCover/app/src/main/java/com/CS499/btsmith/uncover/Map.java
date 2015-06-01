@@ -18,6 +18,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.ParseQuery;
 
 public class Map extends FragmentActivity {
 
@@ -26,10 +27,12 @@ public class Map extends FragmentActivity {
     private LocationManager locationManager;
     private String provider;
     private GoogleMap mMap;
+    private Location myLoc;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         setUpMapIfNeeded();
@@ -45,15 +48,6 @@ public class Map extends FragmentActivity {
         });
 
         Button newEntry = (Button) findViewById(R.id.newEntry);
-        newEntry.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(Map.this, EntryPage.class);
-                startActivity(intent);
-            }
-        });
 
         Button mapSearchSettings = (Button) findViewById(R.id.mapSearchSettings);
         mapSearchSettings.setOnClickListener(new View.OnClickListener()
@@ -71,8 +65,10 @@ public class Map extends FragmentActivity {
         Criteria criteria = new Criteria();
         provider = locationManager.getBestProvider(criteria, false);
         Location location = locationManager.getLastKnownLocation(provider);
+        myLoc = location;
         latitudeField = (TextView) findViewById(R.id.TextView02);
         longitudeField = (TextView) findViewById(R.id.TextView04);
+        moveCamera(location);
 
         // Initialize the location fields
         if (location != null)
@@ -93,6 +89,26 @@ public class Map extends FragmentActivity {
             public void onClick(View v)
             {
                 Intent intent = new Intent(Map.this, neocacheListView.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("Location", myLoc);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+
+        newEntry.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(Map.this, EntryPage.class);
+                Bundle bundle = new Bundle();
+                bundle.putDouble("Latitude", myLoc.getLatitude());
+                bundle.putDouble("Longitude", myLoc.getLongitude());
+                bundle.putParcelable("Location", myLoc);
+
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
@@ -103,6 +119,9 @@ public class Map extends FragmentActivity {
         @Override
         public void onLocationChanged(Location location)
         {
+            Toast.makeText(Map.this, "LOCATION UPDATED", Toast.LENGTH_SHORT).show();
+            myLoc = location;
+            moveCamera(location);
             updateLocation(location);
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 10);
@@ -128,6 +147,7 @@ public class Map extends FragmentActivity {
 
     private void updateLocation(Location location)
     {
+        myLoc = location;
         latitudeField.setText(Double.toString(location.getLatitude()));
         longitudeField.setText(Double.toString(location.getLongitude()));
     }
@@ -155,11 +175,17 @@ public class Map extends FragmentActivity {
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
-                //setUpMap();
-                Toast.makeText(this, "We did it", Toast.LENGTH_SHORT).show();
+                setUpMap();
                 mMap.setMyLocationEnabled(true);
+
             }
         }
+    }
+
+    private void moveCamera(Location location){
+        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 10);
+        mMap.animateCamera(cameraUpdate);
     }
 
     private void setUpMap() {

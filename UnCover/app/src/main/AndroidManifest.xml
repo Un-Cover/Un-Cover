@@ -71,6 +71,10 @@
             android:name=".MapsActivitything"
             android:label="@string/title_activity_maps_activitything" >
         </activity>
+        <activity
+            android:name=".detailed_view"
+            android:label="@string/title_activity_detailed_view" >
+        </activity>
     </application>
 
 </manifest>

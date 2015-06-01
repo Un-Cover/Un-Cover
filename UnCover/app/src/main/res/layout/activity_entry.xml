@@ -49,6 +49,22 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your Name"
+                android:gravity="center"
+                android:textSize="35sp"
+                android:paddingTop="20dp"
+                />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your username here... (50 characters max)"
+                android:maxLength="50"/>
+
+            <TextView
                 android:paddingTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,8 +83,9 @@
                 android:id="@+id/descText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter description here..."
-                android:layout_marginTop="10dp"/>
+                android:hint="Enter description here... (160 characters max)"
+                android:layout_marginTop="10dp"
+                android:maxLength="160"/>
 
             <TextView
                 android:layout_width="match_parent"
