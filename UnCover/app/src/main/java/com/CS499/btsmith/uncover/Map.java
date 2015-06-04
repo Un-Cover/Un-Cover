@@ -129,11 +129,18 @@ public class Map extends FragmentActivity {
             public void done(List<Entry> list, ParseException e) {
                 for(Entry entry : list)
                 {
-                    LatLng entryLocation = new LatLng(entry.getPosition().getLatitude(), entry.getPosition().getLongitude());
-                    Marker mapMarker = mMap.addMarker(new MarkerOptions().position(entryLocation)
-                            .title(entry.getDescription())
-                            .snippet(entry.getName())
-                            .icon(BitmapDescriptorFactory.defaultMarker(hueGenerator())));
+                    if(entry.getPosition() == null)
+                    {
+                        System.out.println("Bad post");
+                    }
+                    else
+                    {
+                        LatLng entryLocation = new LatLng(entry.getPosition().getLatitude(), entry.getPosition().getLongitude());
+                        Marker mapMarker = mMap.addMarker(new MarkerOptions().position(entryLocation)
+                                .title(entry.getDescription())
+                                .snippet(entry.getName())
+                                .icon(BitmapDescriptorFactory.defaultMarker(hueGenerator())));
+                    }
                 }
             }
         });
@@ -204,13 +211,11 @@ public class Map extends FragmentActivity {
 
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
-        Toast.makeText(this, "This is doing something", Toast.LENGTH_SHORT).show();
         if (mMap == null) {
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 mMap.setMyLocationEnabled(true);
-
             }
         }
     }
